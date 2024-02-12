@@ -1,3 +1,7 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+# Secret and environment-specific configuration files
+application-secret.properties
+application-prod.yml
+.env

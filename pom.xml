@@ -13,17 +13,16 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>1.8</java.version>
+    <java.version>17</java.version> <!-- Updated Java version -->
     <spring.boot.version>2.5.2</spring.boot.version>
   </properties>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.5.2</version> <!-- Directly specify the version here -->
+    <version>2.5.2</version> <!-- Consider updating to a version compatible with Java 17 -->
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
-
 
   <dependencies>
     <!-- Spring Boot Starter Web -->
@@ -58,17 +57,49 @@
       <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
 
-    <!-- JUnit for Testing -->
+    <!-- Spring Boot Starter Test -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.junit.vintage</groupId>
+          <artifactId>junit-vintage-engine</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!-- JUnit 4 for unit testing -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
+
+
+
+
+
   </dependencies>
+
+
+
+
 
   <build>
     <plugins>
+      <!-- Maven Compiler Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version> <!-- Ensure you're using a version that supports Java 17 -->
+        <configuration>
+          <release>${java.version}</release> <!-- Ensures compatibility with Java 17 -->
+        </configuration>
+      </plugin>
+
       <!-- Spring Boot Maven Plugin -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
@@ -78,4 +109,3 @@
     </plugins>
   </build>
 </project>
-
