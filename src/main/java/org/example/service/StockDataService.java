@@ -46,17 +46,27 @@ public class StockDataService {
             for (Stock stock : stocks) {
                 if (!stockRepository.existsBySymbol(stock.getSymbol())) {
                     Stock savedStock = stockRepository.save(stock);
+                    // Optionally, immediately create a corresponding StockQuote entry
+                    createInitialStockQuote(savedStock);
                 } else {
                     log.info("Stock with symbol {} already exists, skipping.", stock.getSymbol());
                 }
             }
 
-            log.info("Stocks and their corresponding StockQuotes loaded successfully.");
+            log.info("Stocks loaded successfully.");
         } catch (Exception e) {
-            log.error("Failed to load stocks and stock quotes data from CSV.", e);
+            log.error("Failed to load stocks data from CSV.", e);
         }
     }
 
+    private void createInitialStockQuote(Stock stock) {
+        StockQuote stockQuote = new StockQuote();
+        stockQuote.setStockId(stock.getStock_id());
+        stockQuote.setSymbol(stock.getSymbol());
+        // Set an initial price, this should be updated based on your application's requirements
+        stockQuoteRepository.save(stockQuote);
+        log.info("Initial StockQuote created for symbol: {}", stock.getSymbol());
+    }
 
 
 

@@ -4,7 +4,10 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
 import org.example.util.LocalDateConverter;
@@ -15,7 +18,7 @@ public class Stock {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long stock_id;
 
     @Column(unique = true)
     @CsvBindByName
@@ -36,13 +39,11 @@ public class Stock {
     @CsvBindByName
     private String status;
 
-
     @OneToMany(mappedBy = "stock")
-    private List<UserStock> userStocks = new ArrayList<>();
+    private Set<UserStock> userStocks;
 
-    @OneToOne( mappedBy = "stock", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
-    private StockQuote stockQuote;
-
+//    @OneToMany(mappedBy = "stock")
+//    private List<StockQuote> stockQuotes;
 
     // Default constructor
     public Stock() {}
@@ -53,14 +54,13 @@ public class Stock {
         this.name = name;
     }
 
-    public Stock(String symbol, String name, String exchange, LocalDate ipoDate, LocalDate delistingDate, String status, List<UserStock> userStocks) {
+    public Stock(String symbol, String name, String exchange, LocalDate ipoDate, LocalDate delistingDate, String status) {
         this.symbol = symbol;
         this.name = name;
         this.exchange = exchange;
         this.ipoDate = ipoDate;
         this.delistingDate = delistingDate;
         this.status = status;
-        this.userStocks = userStocks;
     }
 
     // Getters and Setters
@@ -80,14 +80,6 @@ public class Stock {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<UserStock> getUserStocks() {
-        return userStocks;
-    }
-
-    public void setUserStocks(List<UserStock> userStocks) {
-        this.userStocks = userStocks;
     }
 
     public String getExchange() {
@@ -120,6 +112,10 @@ public class Stock {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Long getStock_id() {
+        return  stock_id;
     }
 
     // Helper methods for managing the bidirectional relationship

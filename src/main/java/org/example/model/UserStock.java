@@ -4,18 +4,18 @@ import javax.persistence.*;
 
 @Entity
 public class UserStock {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id") // This is the correct way to reference the column name
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "stock_id") // This is the correct way to reference the column name
+    @ManyToOne
+    @JoinColumn(name = "stock_id")
     private Stock stock;
-
     private int numberOfShares;
 
     // Getters and Setters

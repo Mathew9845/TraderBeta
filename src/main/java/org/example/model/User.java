@@ -2,30 +2,34 @@ package org.example.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
+    private Long user_id;
 
     private String username;
     private String email;
 
     @OneToMany(mappedBy = "user")
-    private List<UserStock> userStocks = new ArrayList<>();
+    private Set<UserStock> userStocks;
 
     public User() {}
 
     // Getters and Setters
 
-    public Long getId() {
-        return id;
+    public Long getUser_id() {
+        return user_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
     public String getUsername() {
@@ -42,14 +46,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<UserStock> getUserStocks() {
-        return userStocks;
-    }
-
-    public void setUserStocks(List<UserStock> userStocks) {
-        this.userStocks = userStocks;
     }
 
 

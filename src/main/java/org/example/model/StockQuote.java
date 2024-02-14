@@ -1,6 +1,7 @@
 package org.example.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.opencsv.bean.CsvBindByName;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -9,33 +10,33 @@ import java.math.BigDecimal;
 public class StockQuote {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(unique = true)
+    @CsvBindByName
     private String symbol; // Primary key, also serving as FK to Stock
 
-    @OneToOne
-    @MapsId // This tells JPA to use the ID from the associated Stock as its own ID
-    @JoinColumn(name = "symbol") // This column is both a PK and FK
-    private Stock stock;
-    @JsonProperty("c")
+    private long StockId;
+
     private BigDecimal currentPrice;
 
-    @JsonProperty("d")
     private BigDecimal change;
 
-    @JsonProperty("dp")
     private BigDecimal percentChange;
 
-    @JsonProperty("h")
     private BigDecimal highPrice;
 
-    @JsonProperty("l")
     private BigDecimal lowPrice;
 
-    @JsonProperty("o")
     private BigDecimal openPrice;
 
-    @JsonProperty("pc")
     private BigDecimal previousClosePrice;
+
+
+//    @ManyToOne
+//    @JoinColumn(name = "stock_id", nullable = false)
+//    private Stock stock;
 
 
 
@@ -102,19 +103,30 @@ public class StockQuote {
         this.previousClosePrice = previousClosePrice;
     }
 
-    public Stock getStock() {
-        return stock;
-    }
-
-    public void setStock(Stock stock) {
-        this.stock = stock;
-    }
-
     public String getSymbol() {
         return symbol;
     }
 
     public void setSymbol(String symbol) {
         this.symbol = symbol;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getStockId() {
+        return StockId;
+    }
+
+    public void setStockId(int stockId) {
+        StockId = stockId;
+    }
+
+    public void setStockId(Long stockId) {
     }
 }
