@@ -17,6 +17,8 @@ public class User {
     private String username;
     private String email;
 
+    private String password;
+
     @OneToMany(mappedBy = "user")
     private Set<UserStock> userStocks;
 
@@ -48,6 +50,21 @@ public class User {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<UserStock> getUserStocks() {
+        return userStocks;
+    }
+
+    public void setUserStocks(Set<UserStock> userStocks) {
+        this.userStocks = userStocks;
+    }
 
     // Helper methods for managing the bidirectional relationship
 

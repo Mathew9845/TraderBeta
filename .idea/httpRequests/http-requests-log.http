@@ -1,0 +1,76 @@
+GET http://localhost:8080/api/stocks/marketstatus2/
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T172340.200.txt
+
+###
+
+GET http://localhost:8080/api/stocks/marketstatus/
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T172339.200.txt
+
+###
+
+POST http://localhost:8080/api/users/register
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-22T172338.404.json
+
+###
+
+GET http://localhost:8080/api/stocks/marketstatus/
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-19T181654.200.txt
+
+###
+
+POST http://localhost:8080/api/users/register
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-19T181651.400.json
+
+###
+
+GET http://localhost:8080/api/stocks/marketstatus/
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-19T181335.200.txt
+
+###
+
+POST http://localhost:8080/api/users/register
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-19T181331.400.json
+
+###
+
+POST http://localhost:8080/api/users/register
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-02-16T222601.400.json
+
+###
+

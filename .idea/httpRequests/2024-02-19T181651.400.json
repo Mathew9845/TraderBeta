@@ -1,0 +1,6 @@
+{
+  "timestamp": "2024-02-19T17:16:51.277+00:00",
+  "status": 400,
+  "error": "Bad Request",
+  "path": "/api/users/register"
+}

@@ -1,0 +1,1 @@
+{"exchange":"US","holiday":"Washington's Birthday","isOpen":false,"session":null,"t":1708363014,"timezone":"America/New_York"}

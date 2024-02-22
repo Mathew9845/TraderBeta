@@ -42,8 +42,8 @@ public class Stock {
     @OneToMany(mappedBy = "stock")
     private Set<UserStock> userStocks;
 
-//    @OneToMany(mappedBy = "stock")
-//    private List<StockQuote> stockQuotes;
+    @OneToOne(mappedBy = "stock")
+    private StockQuote stockQuotes;
 
     // Default constructor
     public Stock() {}

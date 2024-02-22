@@ -19,8 +19,21 @@ public class FinnhubService {
         this.baseUrl = baseUrl;
     }
 
-    public String fetchStockData(String symbol) {
+    public String fetchStockQuote(String symbol) {
         String url = String.format("%s/quote?symbol=%s&token=%s", baseUrl, symbol, apiKey);
         return restTemplate.getForObject(url, String.class);
     }
+
+    public String marketStatus(){
+        String url = String.format("%s/stock/market-status?exchange=US&token=%s",baseUrl, apiKey);
+        System.out.println("Requesting URL: " + url); // Consider using a logger
+        return restTemplate.getForObject(url, String.class);
+
+    }
+
+
+
+
+
+
 }

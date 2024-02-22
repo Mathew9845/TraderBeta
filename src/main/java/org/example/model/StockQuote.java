@@ -10,14 +10,8 @@ import java.math.BigDecimal;
 public class StockQuote {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(unique = true)
-    @CsvBindByName
     private String symbol; // Primary key, also serving as FK to Stock
-
-    private long StockId;
 
     private BigDecimal currentPrice;
 
@@ -34,9 +28,9 @@ public class StockQuote {
     private BigDecimal previousClosePrice;
 
 
-//    @ManyToOne
-//    @JoinColumn(name = "stock_id", nullable = false)
-//    private Stock stock;
+    @OneToOne
+    @JoinColumn(name = "symbol", nullable = false)
+    private Stock stock;
 
 
 
@@ -46,7 +40,14 @@ public class StockQuote {
         // Default constructor
     }
 
-    // Getters and setters
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
     public BigDecimal getCurrentPrice() {
         return currentPrice;
     }
@@ -101,32 +102,5 @@ public class StockQuote {
 
     public void setPreviousClosePrice(BigDecimal previousClosePrice) {
         this.previousClosePrice = previousClosePrice;
-    }
-
-    public String getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getStockId() {
-        return StockId;
-    }
-
-    public void setStockId(int stockId) {
-        StockId = stockId;
-    }
-
-    public void setStockId(Long stockId) {
     }
 }

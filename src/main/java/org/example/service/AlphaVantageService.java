@@ -19,8 +19,7 @@ public class AlphaVantageService {
         this.baseUrl = baseUrl;
     }
 
-    public String fetchStockData(String symbol) {
-        String url = String.format("%s?function=TIME_SERIES_DAILY&symbol=%s&apikey=%s", baseUrl, symbol, apiKey);
-        return restTemplate.getForObject(url, String.class);
-    }
+
+
 }
+

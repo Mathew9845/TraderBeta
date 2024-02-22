@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.annotation.PostConstruct;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -33,6 +32,7 @@ public class StockDataService {
     private Resource stocksCsv;
 
 
+    //Load stock data from  csv to stock table and adding symbols to stockquote table
     @PostConstruct
     @Transactional
     public void loadStocksData() {
@@ -42,7 +42,6 @@ public class StockDataService {
                     .withType(Stock.class)
                     .build()
                     .parse();
-
             for (Stock stock : stocks) {
                 if (!stockRepository.existsBySymbol(stock.getSymbol())) {
                     Stock savedStock = stockRepository.save(stock);
@@ -52,16 +51,13 @@ public class StockDataService {
                     log.info("Stock with symbol {} already exists, skipping.", stock.getSymbol());
                 }
             }
-
             log.info("Stocks loaded successfully.");
         } catch (Exception e) {
             log.error("Failed to load stocks data from CSV.", e);
         }
     }
-
     private void createInitialStockQuote(Stock stock) {
         StockQuote stockQuote = new StockQuote();
-        stockQuote.setStockId(stock.getStock_id());
         stockQuote.setSymbol(stock.getSymbol());
         // Set an initial price, this should be updated based on your application's requirements
         stockQuoteRepository.save(stockQuote);
