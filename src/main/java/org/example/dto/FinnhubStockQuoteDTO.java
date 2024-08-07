@@ -1,53 +1,36 @@
-package org.example.model;
+package org.example.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.opencsv.bean.CsvBindByName;
 
-import javax.persistence.*;
 
-@Entity
-public class StockQuote {
+public class FinnhubStockQuoteDTO {
 
-    @Id
-    @Column(unique = true)
-    private String symbol; // Primary key, also serving as FK to Stock
-
+    @JsonProperty("c")
     private Double currentPrice;
 
+    @JsonProperty("d")
     private Double change;
 
+    @JsonProperty("dp")
     private Double percentChange;
 
+    @JsonProperty("h")
     private Double highPrice;
 
+    @JsonProperty("l")
     private Double lowPrice;
 
+    @JsonProperty("o")
     private Double openPrice;
 
+    @JsonProperty("pc")
     private Double previousClosePrice;
 
+    @JsonProperty("t")
     private Long timestamp;
 
+    // Getters and setters
 
-    @OneToOne
-    @JoinColumn(name = "symbol",referencedColumnName = "symbol", nullable = false)
-    private Stock stock;
-
-
-
-    // Constructors, Getters, and Setters
-
-    public StockQuote() {
-        // Default constructor
-    }
-
-    public String getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
 
     public Double getCurrentPrice() {
         return currentPrice;
@@ -111,13 +94,5 @@ public class StockQuote {
 
     public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public Stock getStock() {
-        return stock;
-    }
-
-    public void setStock(Stock stock) {
-        this.stock = stock;
     }
 }

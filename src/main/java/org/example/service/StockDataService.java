@@ -28,8 +28,14 @@ public class StockDataService {
     @Autowired
     private StockQuoteRepository stockQuoteRepository; // Ensure you have this repository
 
+    private final FinnhubService finnhubService;
+
     @Value("classpath:stocks.csv") // Assuming your CSV file is named stocks.csv
     private Resource stocksCsv;
+
+    public StockDataService(FinnhubService finnhubService) {
+        this.finnhubService = finnhubService;
+    }
 
 
     //Load stock data from  csv to stock table and adding symbols to stockquote table
@@ -63,7 +69,5 @@ public class StockDataService {
         stockQuoteRepository.save(stockQuote);
         log.info("Initial StockQuote created for symbol: {}", stock.getSymbol());
     }
-
-
 
 }

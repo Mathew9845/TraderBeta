@@ -11,7 +11,7 @@ public class LocalDateConverter extends AbstractBeanField<LocalDate, String> {
     @Override
     protected LocalDate convert(String value) {
         if (value == null || value.trim().isEmpty() || "null".equalsIgnoreCase(value.trim())) {
-            return null; // Return null for empty or 'null' strings
+            return null;
         }
         try {
             return LocalDate.parse(value, formatter);

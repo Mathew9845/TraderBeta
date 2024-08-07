@@ -9,15 +9,5 @@ import java.util.Optional;
 @Service
 public class StockService {
 
-    private final StockQuoteRepository stockQuoteRepository;
-
-    @Autowired
-    public StockService(
-            StockQuoteRepository stockQuoteRepository) {
-        this.stockQuoteRepository = stockQuoteRepository;
-    }
-    public Optional<StockQuote> getStockQuoteBySymbol(String symbol) {
-        return stockQuoteRepository.findBySymbol(symbol);
-    }
 
 }

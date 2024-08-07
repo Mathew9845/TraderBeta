@@ -28,9 +28,4 @@ public class UserService {
         return userRepository.save(user);
     }
 
-
-
-
-
-    // Other service methods using userRepository to access user data
 }

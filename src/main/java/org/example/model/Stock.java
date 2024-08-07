@@ -16,10 +16,11 @@ import org.example.util.LocalDateConverter;
 @Entity
 public class Stock {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long stock_id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long stock_id;
 
+    @Id
     @Column(unique = true)
     @CsvBindByName
     private String symbol;
@@ -114,9 +115,9 @@ public class Stock {
         this.status = status;
     }
 
-    public Long getStock_id() {
-        return  stock_id;
-    }
+//    public Long getStock_id() {
+//        return  stock_id;
+//    }
 
     // Helper methods for managing the bidirectional relationship
 

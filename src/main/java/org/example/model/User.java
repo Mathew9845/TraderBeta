@@ -66,7 +66,6 @@ public class User {
         this.userStocks = userStocks;
     }
 
-    // Helper methods for managing the bidirectional relationship
 
 
 

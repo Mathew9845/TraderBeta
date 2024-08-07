@@ -16,12 +16,4 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
-
-
-
-
-
-
-    // Additional endpoints for login and other operations
 }
