@@ -29,9 +29,9 @@ public class StockQuote {
     private Long timestamp;
 
 
-    @OneToOne
-    @JoinColumn(name = "symbol",referencedColumnName = "symbol", nullable = false)
-    private Stock stock;
+//    @OneToOne
+//    @JoinColumn(name = "symbol",referencedColumnName = "symbol", nullable = false)
+//    private Stock stock;
 
 
 
@@ -113,11 +113,11 @@ public class StockQuote {
         this.timestamp = timestamp;
     }
 
-    public Stock getStock() {
-        return stock;
-    }
-
-    public void setStock(Stock stock) {
-        this.stock = stock;
-    }
+//    public Stock getStock() {
+//        return stock;
+//    }
+//
+//    public void setStock(Stock stock) {
+//        this.stock = stock;
+//    }
 }

@@ -16,10 +16,6 @@ import org.example.util.LocalDateConverter;
 @Entity
 public class Stock {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long stock_id;
-
     @Id
     @Column(unique = true)
     @CsvBindByName
@@ -40,13 +36,6 @@ public class Stock {
     @CsvBindByName
     private String status;
 
-    @OneToMany(mappedBy = "stock")
-    private Set<UserStock> userStocks;
-
-    @OneToOne(mappedBy = "stock")
-    private StockQuote stockQuotes;
-
-    // Default constructor
     public Stock() {}
 
     // Constructor with parameters
@@ -63,9 +52,6 @@ public class Stock {
         this.delistingDate = delistingDate;
         this.status = status;
     }
-
-    // Getters and Setters
-
 
     public String getSymbol() {
         return symbol;
@@ -114,13 +100,5 @@ public class Stock {
     public void setStatus(String status) {
         this.status = status;
     }
-
-//    public Long getStock_id() {
-//        return  stock_id;
-//    }
-
-    // Helper methods for managing the bidirectional relationship
-
-
 
 }

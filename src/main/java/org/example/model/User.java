@@ -7,31 +7,28 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@Table(name = "Users")
 public class User {
 
     @Id
+    @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Long user_id;
-
+    private Long userId;
     private String username;
     private String email;
-
     private String password;
 
-    @OneToMany(mappedBy = "user")
-    private Set<UserStock> userStocks;
+
 
     public User() {}
 
-    // Getters and Setters
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -57,16 +54,4 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public Set<UserStock> getUserStocks() {
-        return userStocks;
-    }
-
-    public void setUserStocks(Set<UserStock> userStocks) {
-        this.userStocks = userStocks;
-    }
-
-
-
-
 }

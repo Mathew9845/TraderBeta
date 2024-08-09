@@ -3,5 +3,7 @@
 /workspace.xml
 # Secret and environment-specific configuration files
 application-secret.properties
+keystore.jks
+*.jks
 application-prod.yml
 .env
