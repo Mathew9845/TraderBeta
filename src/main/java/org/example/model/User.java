@@ -13,22 +13,22 @@ public class User {
     @Id
     @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long user_id;
     private String username;
     private String email;
     private String password;
 
-
-
     public User() {}
 
+    @OneToMany(mappedBy = "user")
+    private Set<UserStock> userStock;
 
     public Long getUserId() {
-        return userId;
+        return user_id;
     }
 
     public void setUserId(Long userId) {
-        this.userId = userId;
+        this.user_id = userId;
     }
 
     public String getUsername() {

@@ -38,6 +38,9 @@ public class Stock {
 
     public Stock() {}
 
+    @OneToMany(mappedBy = "stock")
+    private Set<UserStock> userStocks;
+
     // Constructor with parameters
     public Stock(String symbol, String name) {
         this.symbol = symbol;
